@@ -6,12 +6,11 @@ import ru.alxabr.newsview.Model.Wrapper.News;
 
 public interface ContractMVP {
     interface View {
-        void disableUI();
-        void enableUI();
         void showBigLoad();
         void hideBigLoad();
         void showError();
         void updateNewsList();
+        void showUpdateMessage();
     }
 
     interface Presenter {
