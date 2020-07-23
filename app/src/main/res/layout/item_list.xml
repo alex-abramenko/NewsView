@@ -49,13 +49,28 @@
                 android:layout_height="10dp" />
 
             <TextView
+                android:id="@+id/main_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="Команды топ-бойцов&nbsp;Сауля&nbsp;Альвареса&nbsp;(53-1-2, 36 КО) и казахстанца&nbsp;Геннадия&nbsp;Головкина&nbsp;(40-1-1, 35 КО) предварительно планируют третий бой 21 мая 2021 год — на мексиканский праздник Синко де Майо. Об этом пишет инсайдер Майк Коппинджер из The Athletic. «По данным источников, Альварес заработает около $45 млн, Головкин — $30 млн», — добавил он. По словам журналиста, второй бой принёс $27 млн дохода только от билетов на арену, поэтому третий без зрителей не ста.."
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:visibility="gone" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <TextView
                 android:id="@+id/main_source_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Лига.нет 27.05.2015"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="italic" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
