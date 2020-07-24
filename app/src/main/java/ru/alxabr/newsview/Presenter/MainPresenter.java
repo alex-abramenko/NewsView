@@ -1,8 +1,12 @@
 package ru.alxabr.newsview.Presenter;
 
 import android.content.Context;
+import android.os.AsyncTask;
+
+import java.util.ArrayList;
 
 import ru.alxabr.newsview.ContractMVP;
+import ru.alxabr.newsview.Model.Wrapper.News;
 
 public class MainPresenter implements ContractMVP.Presenter {
     private final String[] sources_url = {
@@ -19,6 +23,10 @@ public class MainPresenter implements ContractMVP.Presenter {
     private ContractMVP.Model model;
     private Context context;
 
+    private ArrayList<News> newsList_full = new ArrayList<>();
+    private ArrayList<News> newsList_curr = new ArrayList<>();
+    private int last_position = -1;
+
     public MainPresenter(ContractMVP.View view, ContractMVP.Model model, Context context) {
         this.view = view;
         this.model = model;
@@ -27,11 +35,29 @@ public class MainPresenter implements ContractMVP.Presenter {
 
     @Override
     public void showNewsList() {
+        view.showBigLoad();
 
     }
 
     @Override
     public void updateNewsList() {
 
+    }
+
+    class TaskForLoad extends AsyncTask<Void, Void, Boolean> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Boolean doInBackground(Void... voids) {
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+        }
     }
 }
