@@ -51,13 +51,14 @@ public class MainPresenter implements ContractMVP.Presenter {
         view.showBigLoad();
 
         if (newsList_full.size() >= last_position + count_items - 1) {
+            ArrayList<News> arrayList = new ArrayList<>();
             for (int i = last_position; i < last_position + count_items; i++) {
-                newsList_curr.add(newsList_full.get(i));
+                arrayList.add(newsList_full.get(i));
             }
 
             last_position += count_items;
             view.showUpdateMessage();
-            view.updateNewsList(newsList_curr);
+            view.updateNewsList(arrayList);
         }
     }
 
