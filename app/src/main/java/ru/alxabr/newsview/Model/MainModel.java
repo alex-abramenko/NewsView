@@ -78,6 +78,53 @@ public class MainModel implements ContractMVP.Model {
 
     @Override
     public ArrayList<News> sortByDate(ArrayList<News> newsList) {
-        return newsList;
+        ArrayList<News> arrayList = new ArrayList<>();
+        arrayList.addAll(newsList);
+        quickSort(arrayList, 0, arrayList.size()-1);
+        return arrayList;
+    }
+
+    private static void quickSort(ArrayList<News> array, int low, int high) {
+        if (array.size() == 0)
+            return;//завершить выполнение если длина массива равна 0
+
+        if (low >= high)
+            return;//завершить выполнение если уже нечего делить
+
+        // выбрать опорный элемент
+        int middle = low + (high - low) / 2;
+        long opora = array.get(middle).getPubDate().getTime();
+
+        // разделить на подмассивы, который больше и меньше опорного элемента
+        int i = low, j = high;
+        while (i <= j) {
+            while (array.get(i).getPubDate().getTime() > opora) {
+                i++;
+            }
+
+            while (array.get(j).getPubDate().getTime() < opora) {
+                j--;
+            }
+
+            if (i <= j) {//меняем местами
+                News temp_i = array.get(i);
+                News temp_j = array.get(j);
+
+                array.remove(i);
+                array.add(i, temp_j);
+
+                array.remove(j);
+                array.add(j, temp_i);
+                i++;
+                j--;
+            }
+        }
+
+        // вызов рекурсии для сортировки левой и правой части
+        if (low < j)
+            quickSort(array, low, j);
+
+        if (high > i)
+            quickSort(array, i, high);
     }
 }
