@@ -9,6 +9,7 @@ public interface ContractMVP {
         void showBigLoad();
         void hideBigLoad();
         void showError();
+        void hideError();
         void updateNewsList();
         void showUpdateMessage();
     }
