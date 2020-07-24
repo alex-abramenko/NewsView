@@ -16,10 +16,12 @@ public class MainPresenter implements ContractMVP.Presenter {
             "NGS"};
 
     private ContractMVP.View view;
+    private ContractMVP.Model model;
     private Context context;
 
-    public MainPresenter(ContractMVP.View view, Context context) {
+    public MainPresenter(ContractMVP.View view, ContractMVP.Model model, Context context) {
         this.view = view;
+        this.model = model;
         this.context = context;
     }
 
