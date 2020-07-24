@@ -10,11 +10,13 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="20dp">
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#050037FF"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -26,7 +28,7 @@
                 android:id="@+id/main_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
                 android:paddingRight="5dp"
                 android:text="Коронавирус. Сорван главный бой первого шоу UFC в августе"
                 android:textAlignment="viewStart"
@@ -40,8 +42,8 @@
 
             <ImageView
                 android:id="@+id/main_image"
-                android:layout_width="250dp"
-                android:layout_height="140dp"
+                android:layout_width="300dp"
+                android:layout_height="190dp"
                 app:srcCompat="@android:color/holo_orange_dark" />
 
             <Space
@@ -52,9 +54,9 @@
                 android:id="@+id/main_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
+                android:paddingLeft="10dp"
                 android:paddingRight="5dp"
-                android:text="Команды топ-бойцов&nbsp;Сауля&nbsp;Альвареса&nbsp;(53-1-2, 36 КО) и казахстанца&nbsp;Геннадия&nbsp;Головкина&nbsp;(40-1-1, 35 КО) предварительно планируют третий бой 21 мая 2021 год — на мексиканский праздник Синко де Майо. Об этом пишет инсайдер Майк Коппинджер из The Athletic. «По данным источников, Альварес заработает около $45 млн, Головкин — $30 млн», — добавил он. По словам журналиста, второй бой принёс $27 млн дохода только от билетов на арену, поэтому третий без зрителей не ста.."
+                android:textAlignment="viewStart"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:visibility="gone" />
@@ -67,6 +69,9 @@
                 android:id="@+id/main_source_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:paddingEnd="5dp"
+                android:paddingBottom="10dp"
                 android:text="Лига.нет 27.05.2015"
                 android:textColor="@android:color/tertiary_text_light"
                 android:textSize="14sp"
