@@ -11,18 +11,19 @@ import java.util.ArrayList;
 import javax.xml.parsers.ParserConfigurationException;
 
 import ru.alxabr.newsview.ContractMVP;
+import ru.alxabr.newsview.Model.MainModel;
 import ru.alxabr.newsview.Model.Wrapper.News;
 
 public class MainPresenter implements ContractMVP.Presenter {
     private final String[] sources_url = {
             "https://tayga.info/rss",
-            "https://nsk.aif.ru/rss/all.php",
-            "https://news.ngs.ru/rss/"};
+            "https://news.rambler.ru/rss/head/?limit=100",
+            "https://www.vesti.ru/vesti.rss"};
 
     private final String[] sources_name = {
             "тайга.инфо",
-            "Аргументы и Факты",
-            "NGS"};
+            "Рамблер/Новости",
+            "Вести.RU"};
 
     private ContractMVP.View view;
     private ContractMVP.Model model;
@@ -33,9 +34,9 @@ public class MainPresenter implements ContractMVP.Presenter {
     private int count_items = 10;
     private int last_position = 0;
 
-    public MainPresenter(ContractMVP.View view, ContractMVP.Model model, Context context) {
+    public MainPresenter(ContractMVP.View view, Context context) {
         this.view = view;
-        this.model = model;
+        this.model = new MainModel();
         this.context = context;
     }
 
@@ -48,17 +49,16 @@ public class MainPresenter implements ContractMVP.Presenter {
 
     @Override
     public void updateNewsList() {
-        view.showBigLoad();
-
         if (newsList_full.size() >= last_position + count_items - 1) {
-            ArrayList<News> arrayList = new ArrayList<>();
+            view.showBigLoad();
             for (int i = last_position; i < last_position + count_items; i++) {
-                arrayList.add(newsList_full.get(i));
+                newsList_curr.add(newsList_full.get(i));
             }
 
             last_position += count_items;
             view.showUpdateMessage();
-            view.updateNewsList(arrayList);
+            view.hideBigLoad();
+            view.updateNewsList(newsList_curr);
         }
     }
 
@@ -88,10 +88,17 @@ public class MainPresenter implements ContractMVP.Presenter {
                 newsList_full.clear();
                 newsList_full.addAll(sortedList);
 
-                updateNewsList();
-            }
+                if (newsList_full.size() >= last_position + count_items - 1) {
+                    for (int i = last_position; i < last_position + count_items; i++) {
+                        newsList_curr.add(newsList_full.get(i));
+                    }
 
-            view.hideBigLoad();
+                    last_position += count_items;
+                    view.showUpdateMessage();
+                    view.hideBigLoad();
+                    view.updateNewsList(newsList_curr);
+                }
+            }
         }
     }
 }
