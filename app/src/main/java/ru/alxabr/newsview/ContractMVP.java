@@ -1,6 +1,12 @@
 package ru.alxabr.newsview;
 
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
+
+import javax.xml.parsers.ParserConfigurationException;
 
 import ru.alxabr.newsview.Model.Wrapper.News;
 
@@ -10,7 +16,7 @@ public interface ContractMVP {
         void hideBigLoad();
         void showError();
         void hideError();
-        void updateNewsList();
+        void updateNewsList(ArrayList<News> newsArrayList);
         void showUpdateMessage();
     }
 
@@ -20,6 +26,7 @@ public interface ContractMVP {
     }
 
     interface Model {
-        ArrayList<News> readRss();
+        ArrayList<News> readRss(String feedUrl, String source) throws IOException, ParserConfigurationException, SAXException;
+        ArrayList<News> sortByDate(ArrayList<News> newsList);
     }
 }
